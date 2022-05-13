@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% load static %}
+<h1 class="h1-main">Home page</h1>
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+    Hi {{ user.username }}!
+{% else %}
+<div class="d-flex flex-row justify-content-center">
+  <div class="p-2">Home page</div>
+  <div class="p-2">
+      <p>You are not logged in</p>
+      <a class="btn btn-success" href="{% url 'login' %}">Log In</a> |
+      <a class="btn btn-warning" href="{% url 'signup' %}">Sign Up</a>
+      <img src = "{% static 'img/images-removebg-preview.png' %}">
+ </div>
+</div>
+{% endif %}
+
+{% endblock %}
