@@ -30,6 +30,9 @@ ALLOWED_HOSTS = []
 
 # Model utilisateur non admin
 AUTH_USER_MODEL  =  "accounts.User"
+# Redirection aprés authentification des utilisateurs
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Application definition
 
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 # Api
