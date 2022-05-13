@@ -1,7 +1,7 @@
 
 # django-api-boostrap-template
 
-Installer un projet Django déja parametré pour la création d'api avec possibilité de créer une inteface utilisateur pour présenter votre service/projet, grâce à boostrap.
+Installer un projet Django déjà paramétré pour la création d'api avec possibilité de créer une interface utilisateur pour présenter votre service/projet, grâce à Bootstrap.
 
 
 
