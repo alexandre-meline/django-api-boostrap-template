@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+{% load static %}
+
+<h1 class="h1-main">Créer un nouveau model</h1>
+
+{% if user.is_authenticated %}
+    <form method="POST">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Créer un model">
+    </table>
+    </form>
+{% else %}
+
+{% endif %}
+
+{% endblock %}

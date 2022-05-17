@@ -1,0 +1,25 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Créer un nouveau modèle{% endblock %}
+{% block content %}
+{% load static %}
+
+<h1 class="h1-main">Mes modèles</h1>
+
+{% if user.is_authenticated %}
+<div class="main">
+
+    {% for data in spacymodel_list %}.
+
+        {{ data.model_name }}<br/>
+        {{ data.model_id }}
+        <hr/>
+
+    {% endfor %}
+
+</div>
+{% else %}
+
+{% endif %}
+
+{% endblock %}

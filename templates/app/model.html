@@ -1,0 +1,15 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Mon modele{% endblock %}
+{% block content %}
+{% load static %}
+
+<h1 class="h1-main">Mon modèle</h1>
+
+{% if user.is_authenticated %}
+    <p>{{ object.model_name }}</p>
+{% else %}
+
+{% endif %}
+
+{% endblock %}

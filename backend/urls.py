@@ -27,7 +27,6 @@ from api import views
 # /todos/- Cette route renvoie chaque élément de notre API.
 # todos/id- Renvoie un élément spécifique et c'est id.
 router = routers.DefaultRouter()
-router.register(r'todos', views.TodoView, 'todo')
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
@@ -35,4 +34,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
+    path('dashboard/', include('app.urls'))
 ]

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+{% load static %}
+
+{% if user.is_authenticated %}
+<h1 class="h1-main">Créer un nouveau sujet</h1>
+    <form method="POST">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Créer un sujet">
+    </table>
+    </form>
+
+    <a class="btn btn-success" href="{% url 'models' %}">Mes Modèles</a>
+{% else %}
+
+{% endif %}
+
+{% endblock %}
