@@ -1,15 +1,22 @@
 {% extends "base_dashboard.html" %}
-
-{% block title %}Mon modele{% endblock %}
-{% block content %}
 {% load static %}
+{% block title %}Mon modele{% endblock %}
+
+{% block content %}
 
 <h1 class="h1-main">Mon modèle</h1>
 
-{% if user.is_authenticated %}
-    <p>{{ object.model_name }}</p>
-{% else %}
+<p>
+    <a href="{% url 'edit_model' pk=spacymodel.id %}">
+        Modifier le model
+    </a>
+</p>
+<p>
+    <a href="{% url 'delete_model' pk=spacymodel.id %}">
+        Supprimer le model
+    </a>
+</p>
+<p>{{ spacymodel.model_name }}</p>
 
-{% endif %}
 
 {% endblock %}

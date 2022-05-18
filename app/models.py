@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from  django.urls  import  reverse
 
 # Create your models here.
 class BaseModel(models.Model):
@@ -19,6 +20,9 @@ class SpacyModel(BaseModel):
     def __str__(self):
         return self.model_name
 
+    def get_absolute_url(self):
+        return reverse("model", args=[str(self.id)])
+
 class SpacySujet(BaseModel):
     spacy_model = models.ForeignKey(
         to=SpacyModel,
@@ -29,6 +33,9 @@ class SpacySujet(BaseModel):
 
     def __str__(self):
         return self.sujet_name
+
+    def get_absolute_url(self):
+        return reverse("sujet", args=[str(self.id)])
 
 
 class SpacyText(BaseModel):

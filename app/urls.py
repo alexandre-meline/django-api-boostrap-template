@@ -10,11 +10,11 @@ urlpatterns = [
      # Create model
      path('new_model/', views.ModelCreateView.as_view(), name='new_model'),
      # Update model
-     #path('model/<model_id:int>/', views.spacy_model, name='edit_model'),
+     path('model/<pk>/edit/', views.ModelUpdateView.as_view(), name='edit_model'),
      # Details model
      path('model/<pk>/', views.ModelDetailView.as_view(), name='model'),
      # Delete model
-     #path('model/<model_id:int>', views.spacy_model, name='delete_model'),
+     path('model/<pk>/delete', views.ModelDeleteView.as_view(), name='delete_model'),
      #__ Sujets __
      # Index sujets
      # Create sujet

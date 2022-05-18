@@ -9,10 +9,8 @@
 {% if user.is_authenticated %}
 <div class="main">
 
-    {% for data in spacymodel_list %}.
-
-        {{ data.model_name }}<br/>
-        {{ data.model_id }}
+    {% for model in spacymodel_list %}
+        <a href="{{ model.get_absolute_url }}">{{ model.model_name }}</a>
         <hr/>
 
     {% endfor %}

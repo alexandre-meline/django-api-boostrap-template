@@ -11,17 +11,15 @@ import os
 def dashboard(request):
     return render(request, "app/dashboard.html")
 
-
-
 # CRUD Models
 class ModelListView(ListView):
     model = models.SpacyModel
     template_name = "app/models.html"
 
+
 class ModelCreateView(CreateView):
     model = models.SpacyModel
-    template_name = 'app/new_model.html'
-
+    template_name = 'app/edit_model.html'
 
     fields = ['model_name']
 
@@ -32,16 +30,38 @@ class ModelCreateView(CreateView):
     def get_success_url(self):
         return reverse('new_sujet', kwargs={'model_id': self.object.pk})
 
+    def get_context_data(self, **kwargs):
+        context = super(ModelCreateView, self).get_context_data(**kwargs)
+        context['submit_text_buttom'] = "Créer"
+        return context
+
 
 class ModelDetailView(DetailView):
     model = models.SpacyModel
     template_name = 'app/model.html'
 
-"""class ModelUpdateView(UpdateView):
-    pass
+
+class ModelUpdateView(UpdateView):
+    model = models.SpacyModel
+    template_name = "app/edit_model.html"
+
+    fields = ['model_name']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(ModelUpdateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(ModelUpdateView, self).get_context_data(**kwargs)
+        context['submit_text_buttom'] = "Mettre à jour"
+        return context
 
 class ModelDeleteView(DeleteView):
-    pass"""
+    model = models.SpacyModel
+    template_name = 'app/delete_model.html'
+
+    def get_success_url(self):
+        return reverse('models')
 
 
 # CRUD Sujets
@@ -51,7 +71,7 @@ class SujetList(ListView):
 
 class SujetCreate(CreateView):
     model = models.SpacySujet
-    template_name = 'app/new_sujet.html'
+    template_name = 'app/edit_sujet.html'
 
     fields = ['sujet_name']
 
@@ -93,4 +113,4 @@ def spacy_sujet(request):
         print('je uis pas passé')
 
     context['form'] = form
-    return render(request, "app/new_sujet.html", context)
+    return render(request, "app/edit_sujet.html", context)

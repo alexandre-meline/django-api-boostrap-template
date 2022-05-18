@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Model utilisateur non admin
 AUTH_USER_MODEL  =  "accounts.User"
 # Redirection aprés authentification des utilisateurs
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Application definition
